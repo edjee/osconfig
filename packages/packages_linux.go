@@ -127,6 +127,9 @@ func GetInstalledPackages(ctx context.Context) (Packages, error) {
 			pkgs.Deb = deb
 		}
 	}
+	if cos, err := InstalledCOSPackages(); err == nil {
+		pkgs.Cos = cos
+	}
 	if util.Exists(gem) {
 		gem, err := InstalledGemPackages(ctx)
 		if err != nil {
